@@ -1,5 +1,4 @@
 #!/bin/bash
-#APP='/home/netisopl516/resources/app'
 APP_PATH='/foundry-app'
 DATA_PATH='/foundry-data'
 mkdir -p $DATA_PATH
