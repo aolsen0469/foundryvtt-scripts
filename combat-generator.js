@@ -1,31 +1,28 @@
-const getCombatEnergy = game.tables.entities.find(t => t.name === "combat-energy").roll().results[0].text;
-const getCombatGoal = game.tables.entities.find(t => t.name === "combat-goal").roll().results[0].text;
-const getCombatTerrain = game.tables.entities.find(t => t.name === "combat-terrain").roll().results[0].text;
-const getCombatTension = game.tables.entities.find(t => t.name === "ticking-timebomb").roll().results[0].text;
+const getCombatEnergy = game.tables.getName("kinetic-energy");
+const getCombatGoal = game.tables.getName("combat-goal");
+const getCombatTerrain = game.tables.getName("combat-terrain");
+const getCombatTension = game.tables.getName("ticking-timebomb");
+
+
+let n1 = await getCombatGoal.roll();
+let n2 = await getCombatEnergy.roll();
+let n3 = await getCombatTerrain.roll();
+let n4 = await getCombatTension.roll();
+
+let n10 = `<h2> Combat Encounter Generator</h2>
+The Players goal is to:<b> ${n1.results[0].data.text} </b> <br> <br>
+They need to do it quickly, because: <b> ${n4.results[0].data.text} </b> <br><br>
+This encounter will be complicated by the fact that the terrain is: <b> ${n3.results[0].data.text}</b> <br><br>
+Something in this scene that could be used by the PCs <i>or</i> foes is:<b> ${n2.results[0].data.text} </b><br><br>
+`
 
 
 
-function getBarovianText(b){
-	return "<p><h2>" + "Combat Scene" + "</p></h2>" + 
-               " <br> <b>Tension:</b> " + getCombatTension + 
-               " <br> <b>Terrain:</b> " + getCombatTerrain + 
-               " <br> <b>Goal:</b> " + getCombatGoal + 
-               " <br> <b>Kinetic Energy:</b> " + getCombatEnergy +
-               "</p>";
-
-}
-
-function printMessage(message){
-	message = message;
-
-	let chatData = {
-	user : game.user._id,
-	content : message,
-	whisper : game.users.entities.filter(u => u.isGM).map(u => u._id)
-	};
-
-	ChatMessage.create(chatData,{});
-}
+ChatMessage.create({
+user: game.user._id,
+speaker: ChatMessage.getSpeaker({token: actor}),
+content: n10
+});
 
 
-printMessage(getBarovianText());
+//await token.update({name: `${n1.results[0].data.text} ${n2.results[0].data.text}`});
