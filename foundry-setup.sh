@@ -2,7 +2,11 @@
 URL_PATH='https://foundryvtt.s3.amazonaws.com/releases/0.8.9/foundryvtt-0.8.9.zip?AWSAccessKeyId=AKIA2KJE5YZ3EFLQJT6N&Signature=eqOD5zm%2FdtMYbiOUc2P0BVAPUCg%3D&Expires=1630862840'
 APP_PATH='/foundry-app'
 DATA_PATH='/foundry-data'
-mkdir -p ${DATA_PATH}
+mkdir -p ${DATA_PATH}/player-assets/art/{tokens,icons}
+mkdir -p ${DATA_PATH}/dm-assets/art/{tokens,images}
+mkdir -p ${DATA_PATH}/dm-assets/music/{tension,environment,combat}
+mkdir -p ${DATA_PATH}/dm-assets/sounds
+mkdir -p ${DATA_PATH}/dm-assets/art/{tokens,images,maps}
 mkdir -p ${APP_PATH}
 sudo apt install -y libssl-dev zip curl wget unzip
 curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
