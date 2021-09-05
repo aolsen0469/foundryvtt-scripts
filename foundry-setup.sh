@@ -4,7 +4,7 @@ APP_PATH='/foundry-app'
 DATA_PATH='/foundry-data'
 mkdir -p ${DATA_PATH}
 mkdir -p ${APP_PATH}
-sudo apt install -y libssl-dev zip
+sudo apt install -y libssl-dev zip curl wget unzip
 curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
 sudo apt install -y nodejs
 wget $URL_PATH -O foundryvtt.zip
