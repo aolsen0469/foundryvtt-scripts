@@ -5,6 +5,8 @@
 # Download a random image to a specific directory
 # rename the file with the input provided. Keep the file extension.
 # have a "-h" optional argument that explains to the user how to specify arguments
+# EXAMPLE: KEYWORDS='dnd,skeleton,giant'; python3.9 CCwKCHv6.py -k $KEYWORDS -d /foundry-data/Data/dm-assets/art/tokens -n $KEYWORDS.jpg
+
 
 import sys
 import os
